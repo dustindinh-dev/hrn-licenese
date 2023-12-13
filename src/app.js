@@ -60,7 +60,7 @@ async function run() {
           {
             property: "UserId",
             rich_text: {
-              contains: data.user_id
+              equals: data.user_id
             }
           },
           {
