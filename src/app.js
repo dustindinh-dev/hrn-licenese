@@ -47,6 +47,9 @@ async function run() {
     const { value, error } = requestSchema.validate(data)
 
     if (error) {
+
+      console.log(`Licenses request invalid data: ${data}`);
+
       return {
         isValid: false,
         reason: "Invalid request data!"
@@ -74,11 +77,17 @@ async function run() {
     })
 
     if (blockedDb.results.length > 0) {
+
+      console.log(`Licenses request blocked: ${data}`);
+
+
       return {
         isValid: false,
         reason: "Your license got blocked: " + blockedDb.results[0].properties.Reason.rich_text[0].plain_text
       }
     }
+
+    console.log(`Licenses request valid: ${data}`);
 
     return { isValid: true, reason: "Your licenes is okay" }
   })
