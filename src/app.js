@@ -48,7 +48,7 @@ async function run() {
 
     if (error) {
 
-      console.log(`Licenses request invalid data: ${data}`);
+      console.log(`Licenses request invalid data: [${data.nonce} ${data.user_id} ${data.resource}]`);
 
       return {
         isValid: false,
@@ -78,7 +78,7 @@ async function run() {
 
     if (blockedDb.results.length > 0) {
 
-      console.log(`Licenses request blocked: ${data}`);
+      console.log(`Licenses request blocked: [${data.nonce} ${data.user_id} ${data.resource}]`);
 
 
       return {
@@ -87,7 +87,7 @@ async function run() {
       }
     }
 
-    console.log(`Licenses request valid: ${data}`);
+    console.log(`Licenses request valid: [${data.nonce} ${data.user_id} ${data.resource}]`);
 
     return { isValid: true, reason: "Your licenes is okay" }
   })
